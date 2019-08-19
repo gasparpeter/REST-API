@@ -8,8 +8,13 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
+    const product = {
+        name: req.body.name,
+        price: req.body.price
+    };
     res.status(201).json({
-        message: 'Hadling POST request to /products'
+        message: 'Hadling POST request to /products',
+        createdProduct: product
     });
 });
 
@@ -17,7 +22,7 @@ router.get('/:productId', (req, res, next) => {
    const id = req.params.productId;
    if (id === 'special') {
        res.status(200).json({
-           message: 'You discovered the special ID'
+           message: 'You discovered the special ID',
            id: id
        })
    }else {
